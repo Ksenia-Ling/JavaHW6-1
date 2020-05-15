@@ -2,7 +2,7 @@ package ru.netology.stats;
 
 public class StatsService {
 
-    int CalculateTotalSales(int[] sales) {
+    int calculateTotalSales(int[] sales) {
         int sum = 0;
         for (int monthlySales : sales) {
             sum += monthlySales;
@@ -10,17 +10,14 @@ public class StatsService {
         return sum;
     }
 
-    double CalculateAverageSales(int[] sales) {
-        int sum = 0;
-        for (int monthlySales : sales) {
-            sum += monthlySales;
-        }
+    double calculateAverageSales(int[] sales) {
+        int sum = calculateTotalSales(sales);
         int averageMonthlySales = sum / sales.length;
 
         return averageMonthlySales;
     }
 
-    int FindMaxSalesMonthNumber(int[] sales) {
+    int findMaxSalesMonthNumber(int[] sales) {
         int currentMaxSales = sales[0];
         int indexOfCurrentMax = 0;
         for (int counter = 0; counter < sales.length; counter++) {
@@ -33,7 +30,7 @@ public class StatsService {
         return indexOfCurrentMax + 1;
     }
 
-    int FindMinSalesMonthNumber(int[] sales) {
+    int findMinSalesMonthNumber(int[] sales) {
         int currentMinSales = sales[0];
         int indexOfCurrentMin = 0;
         for (int counter = 0; counter < sales.length; counter++) {
@@ -46,12 +43,8 @@ public class StatsService {
         return indexOfCurrentMin + 1;
     }
 
-    int SumsUpMonthsWithBelowAverageSales(int[] sales) {
-        int sum = 0;
-        for (int monthlySales : sales) {
-            sum += monthlySales;
-        }
-        double averageMonthlySales = sum / sales.length;
+    int sumsUpMonthsWithBelowAverageSales(int[] sales) {
+        double averageMonthlySales = calculateAverageSales(sales);
         int amountOfMonths = 0;
         for (int monthlySales : sales)
             if (monthlySales < averageMonthlySales) {
@@ -60,12 +53,8 @@ public class StatsService {
         return amountOfMonths;
     }
 
-    int SumsUpMonthsWithOverAverageSales(int[] sales) {
-        int sum = 0;
-        for (int monthlySales : sales) {
-            sum += monthlySales;
-        }
-       double averageMonthlySales = sum / sales.length;
+    int sumsUpMonthsWithOverAverageSales(int[] sales) {
+       double averageMonthlySales = calculateAverageSales(sales);
         int amountOfMonths = 0;
         for (int monthlySales : sales)
             if (monthlySales > averageMonthlySales) {
